@@ -1,0 +1,21 @@
+[package]
+name = "advent_of_code_2025"
+version = "0.1.0"
+edition = "2021"
+authors = ["Alex Jones"]
+default-run = "advent_of_code_2025"
+publish = false
+
+[[bin]]
+name = "advent_of_code_2025"
+path = "all.rs"
+
+[dependencies]
+clap = { version = "4.5.21", features = ["derive"] }
+itertools = "0.13.0"
+lazy_static = "1.5.0"
+regex = "1.11.1"
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
