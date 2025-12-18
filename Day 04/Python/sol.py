@@ -5,22 +5,26 @@ Desc: Solution to day 4 problems (7 & 8) for Advent of Code 2025, solved in Pyth
 """
 data = open("Day 04/data.txt", "r").read().strip().replace("\r","").split("\n")
 data = {(y + x * 1j): c for y, row in enumerate(data) for x, c in enumerate(row)}
-ADJACENT = [(a + b) for a in (-1,0,1) for b in (-1j,0,1j) if a or b]
+ADJ = [(a + b) for a in (-1,0,1) for b in (-1j,0,1j) if a or b]
 
 def remove_rolls(data: dict[complex, str]) -> int:
-    removed = []
-    for pos, c in data.items():
-        ngbs = len([1 for dir_ in ADJACENT if data.get(pos + dir_) == '@'])
-        if c == '@' and ngbs < 4:
-            removed.append(pos)
-    for pos in removed:
-        data[pos] = '.'
-    return len(removed)
+    return len([
+        pos
+        for pos, c in data.items()
+        if c == '@' and len([d for d in ADJ if data.get(pos + d) == '@']) < 4
+    ])
 
-p2 = p1 = remove_rolls(data)
-print("Problem 7:", p1)
+def remove_all_rolls(data: dict[complex, str]) -> int:
+    removed = 0
+    queue = set(pos for pos, c in data.items() if c == '@')
+    while queue:
+        pos = queue.pop()
+        neighbours = [(pos + d) for d in ADJ if data.get(pos + d) == '@']
+        if len(neighbours) < 4:
+            removed += 1
+            data[pos] = '.'
+            queue |= set(neighbours)
+    return removed
 
-while p1:
-    p1 = remove_rolls(data)
-    p2 += p1
-print("Problem 8:", p2)
+print("Problem 7:", remove_rolls(data))
+print("Problem 8:", remove_all_rolls(data))
