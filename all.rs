@@ -9,6 +9,8 @@ use lazy_static::lazy_static;
 
 #[path = "./Day 01/Rust/sol.rs"]
 mod one;
+#[path = "./Day 03/Rust/sol.rs"]
+mod three;
 #[path = "./Day 02/Rust/sol.rs"]
 mod two;
 
@@ -19,6 +21,7 @@ lazy_static! {
         let mut m = HashMap::new();
         m.insert(01u8, one::solve as Func);
         m.insert(02u8, two::solve as Func);
+        m.insert(03u8, three::solve as Func);
         m
     };
 }
