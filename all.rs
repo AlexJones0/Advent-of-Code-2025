@@ -7,6 +7,8 @@ use lazy_static::lazy_static;
 // There's probably a nicer way to do this while maintaining my existing directory structure,
 // but I'm doing this hackily for now to avoid spending a lot of time on this.
 
+#[path = "./Day 08/Rust/sol.rs"]
+mod eight;
 #[path = "./Day 05/Rust/sol.rs"]
 mod five;
 #[path = "./Day 04/Rust/sol.rs"]
@@ -34,6 +36,7 @@ lazy_static! {
         m.insert(05u8, five::solve as Func);
         m.insert(06u8, six::solve as Func);
         m.insert(07u8, seven::solve as Func);
+        m.insert(08u8, eight::solve as Func);
         m
     };
 }
