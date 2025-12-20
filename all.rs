@@ -21,6 +21,8 @@ mod one;
 mod seven;
 #[path = "./Day 06/Rust/sol.rs"]
 mod six;
+#[path = "./Day 10/Rust/sol.rs"]
+mod ten;
 #[path = "./Day 03/Rust/sol.rs"]
 mod three;
 #[path = "./Day 02/Rust/sol.rs"]
@@ -40,6 +42,7 @@ lazy_static! {
         m.insert(07u8, seven::solve as Func);
         m.insert(08u8, eight::solve as Func);
         m.insert(09u8, nine::solve as Func);
+        m.insert(10u8, ten::solve as Func);
         m
     };
 }
