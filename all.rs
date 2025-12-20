@@ -9,6 +9,8 @@ use lazy_static::lazy_static;
 
 #[path = "./Day 08/Rust/sol.rs"]
 mod eight;
+#[path = "./Day 11/Rust/sol.rs"]
+mod eleven;
 #[path = "./Day 05/Rust/sol.rs"]
 mod five;
 #[path = "./Day 04/Rust/sol.rs"]
@@ -43,6 +45,7 @@ lazy_static! {
         m.insert(08u8, eight::solve as Func);
         m.insert(09u8, nine::solve as Func);
         m.insert(10u8, ten::solve as Func);
+        m.insert(11u8, eleven::solve as Func);
         m
     };
 }
